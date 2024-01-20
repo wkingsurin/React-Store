@@ -1,11 +1,11 @@
 import classes from "./App.module.scss";
 
-export default function App() {
-  console.log(classes);
+import Header from "./Components/Header/Header";
 
+export default function App() {
   return (
-    <div className="wrapper">
-      {/* <Header /> */}
+    <div className={classes.wrapper}>
+      <Header container={classes.container} />
       {/* <Main /> */}
       {/* <Footer /> */}
     </div>

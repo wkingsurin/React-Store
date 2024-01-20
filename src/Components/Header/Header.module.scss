@@ -1,0 +1,67 @@
+.header {
+  flex: 0 0;
+
+  width: 100%;
+
+  border-bottom: 1px solid var(--strk);
+}
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  height: 99px;
+}
+.nav {
+}
+.list {
+  display: flex;
+  list-style-type: none;
+
+  margin: 0;
+  padding: 0;
+
+  & > *:not(:last-child) {
+    margin-right: 25px;
+  }
+}
+.li {
+}
+.button {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 55px;
+  height: 55px;
+  background-color: transparent;
+
+  outline: none;
+  border: none;
+
+  border-radius: var(--rad50);
+  cursor: pointer;
+
+  transition: var(--trans03s);
+}
+
+.icon {
+  width: 35px;
+  height: 35px;
+}
+
+.path {
+  fill: white;
+
+  transition: var(--trans03s);
+}
+
+.active {
+  background: white;
+
+  .path {
+    fill: var(--glob);
+  }
+}

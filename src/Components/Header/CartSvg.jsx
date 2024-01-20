@@ -1,10 +1,22 @@
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
- preserveAspectRatio="xMidYMid meet">
-
-<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
-<path d="M78 4789 c-43 -22 -78 -81 -78 -129 0 -50 35 -107 80 -130 37 -19 58
+export default function CartSvg({ classIcon, classPath }) {
+  return (
+    <svg
+      className={classIcon}
+      version="1.0"
+      xmlns="http://www.w3.org/2000/svg"
+      width="512.000000pt"
+      height="512.000000pt"
+      viewBox="0 0 512.000000 512.000000"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <g
+        className={classPath}
+        transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+        fill="#000000"
+        stroke="none"
+      >
+        <path
+          d="M78 4789 c-43 -22 -78 -81 -78 -129 0 -50 35 -107 80 -130 37 -19 58
 -20 444 -20 l406 0 5 -22 c13 -53 535 -2408 535 -2413 0 -2 -19 -14 -42 -26
 -24 -12 -68 -47 -98 -78 -134 -138 -165 -328 -82 -505 58 -124 183 -220 321
 -246 30 -5 117 -10 195 -11 109 -1 131 -3 97 -10 -227 -44 -391 -278 -353
@@ -21,6 +33,9 @@ fill="#000000" stroke="none">
 c1616 0 1701 -1 1696 -17z m-2746 -3003 c45 -23 80 -80 80 -130 0 -76 -74
 -150 -150 -150 -76 0 -150 74 -150 150 0 48 35 107 78 129 48 26 93 26 142 1z
 m2120 0 c45 -23 80 -80 80 -130 0 -76 -74 -150 -150 -150 -76 0 -150 74 -150
-150 0 48 35 107 78 129 48 26 93 26 142 1z"/>
-</g>
-</svg>
+150 0 48 35 107 78 129 48 26 93 26 142 1z"
+        />
+      </g>
+    </svg>
+  );
+}
