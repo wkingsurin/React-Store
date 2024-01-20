@@ -3,10 +3,10 @@ import classes from "./Header.module.scss";
 import StoreSvg from "./StoreSvg";
 import CartSvg from "./CartSvg";
 
-export default function Header({ container }) {
+export default function Header({ classContainer }) {
   return (
     <header className={classes.header}>
-      <div className={container}>
+      <div className={classContainer}>
         <div className={classes.block}>
           <nav className={classes.nav}>
             <ul className={classes.list}>
