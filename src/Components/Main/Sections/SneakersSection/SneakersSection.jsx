@@ -11,12 +11,20 @@ export default function SneakersSection({
   classSection,
   classContainer,
   data,
+  tab,
+  setTab,
+  onClick,
 }) {
   return (
     <section className={classSection}>
       <div className={classContainer}>
         <div className={classes.sectionBlock}>
-          <Navigation classes={mainClasses}>
+          <Navigation
+            onClick={onClick}
+            tab={tab}
+            setTab={setTab}
+            classes={mainClasses}
+          >
             <Li classes={mainClasses} active={false} text={"Main"} />
             <Li classes={mainClasses} active={true} text={"Sneakers"} />
           </Navigation>

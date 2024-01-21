@@ -2,8 +2,6 @@ import IncrementSvg from "../IncrementSvg";
 import DecrementSvg from "../DecrementSvg";
 
 export default function Interaction({ classesProduct, value }) {
-  console.log(classesProduct);
-
   return (
     <div className={classesProduct.interaction}>
       <div className={classesProduct.buttons}>
