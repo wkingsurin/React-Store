@@ -1,21 +1,33 @@
-export default function Card({ classes, src, alt, name, currency, value }) {
+export default function Card(props) {
   return (
-    <div className={classes.wrapper}>
-      <div className={classes.card}>
-        <a href={"#"} className={classes.imageBlock}>
+    <div className={props.classes.wrapper}>
+      <div className={props.classes.card}>
+        <a
+          id={props.id}
+          onClick={(e) => props.onClickProduct(e)}
+          href={"#"}
+          className={props.classes.imageBlock}
+        >
           <img
-            src={src || "./nike-air-jordan-xxxvii-w1/1.jpg"}
-            alt={src || "Nike Air Jordan XXXVII"}
-            className={classes.image}
+            src={props.src || "./nike-air-jordan-xxxvii-w1/1.jpg"}
+            alt={props.src || "Nike Air Jordan XXXVII"}
+            className={props.classes.image}
           />
         </a>
-        <div className={classes.description}>
-          <div className={classes.price}>
-            <span className={classes.currency}>{currency || "$"}</span>
-            <span className={classes.value}>{value || 329}</span>
+        <div className={props.classes.description}>
+          <div className={props.classes.price}>
+            <span className={props.classes.currency}>
+              {props.currency || "$"}
+            </span>
+            <span className={props.classes.value}>{props.value || 329}</span>
           </div>
-          <a href={"#"} className={classes.text}>
-            {name || "Nike Air Jordan XXXVII"}
+          <a
+            id={props.id}
+            onClick={(e) => props.onClickProduct(e)}
+            href={"#"}
+            className={props.classes.text}
+          >
+            {props.name || "Nike Air Jordan XXXVII"}
           </a>
         </div>
       </div>

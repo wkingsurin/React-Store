@@ -22,7 +22,7 @@ export default function App() {
   return (
     <div className={classes.wrapper}>
       <Header onClick={onClickPage} classContainer={classes.container} />
-      <Main classContainer={classes.container} page={page} />
+      <Main classContainer={classes.container} page={page} setPage={setPage} />
       {/* <Footer /> */}
     </div>
   );

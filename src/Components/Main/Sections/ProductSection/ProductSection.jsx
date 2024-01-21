@@ -4,25 +4,18 @@ import Navigation from "../Navigation";
 import Gallery from "./Gallery/Gallery";
 import Description from "./Description/Description";
 
-export default function ProductSection({
-  classesMain,
-  classContainer,
-  data,
-  tab,
-  setTab,
-  onClick,
-}) {
-  const product = data[2];
+export default function ProductSection(props) {
+  const product = props.data;
 
   return (
-    <section className={classesMain.section}>
-      <div className={classContainer}>
-        <div className={classesMain.sectionBlock}>
+    <section className={props.classesMain.section}>
+      <div className={props.classContainer}>
+        <div className={props.classesMain.sectionBlock}>
           <Navigation
-            onClick={onClick}
-            tab={tab}
-            setTab={setTab}
-            classes={classesMain}
+            onClick={props.onClick}
+            tab={props.tab}
+            setTab={props.setTab}
+            classes={props.classesMain}
           />
           <div className={classes.product}>
             <div className={classes.sectionContent}>

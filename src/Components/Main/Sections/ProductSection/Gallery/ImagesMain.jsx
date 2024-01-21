@@ -1,12 +1,12 @@
 import Image from "./Image";
 
-export default function ImagesMain({ classesProduct, product }) {
+export default function ImagesMain(props) {
   return (
-    <div className={classesProduct.mainImage}>
+    <div className={props.classesProduct.mainImage}>
       <Image
-        classesProduct={classesProduct}
-        src={product.src}
-        alt={product.name}
+        classesProduct={props.classesProduct}
+        src={props.product.src}
+        alt={props.product.name}
       />
     </div>
   );

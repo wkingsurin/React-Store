@@ -9,20 +9,36 @@ import CartSection from "./Sections/CartSection/CartSection";
 
 import data from "../../data.json";
 import dataMini from "../../data-4-items.json";
+import { compileString } from "sass";
 
 // Put it in a separate module
 export const correctName = (name) => {
   return name.split("-").join(" ");
 };
 
-export default function Main({ classContainer, page }) {
-  const [tab, setTab] = useState("preview");
+export default function Main({ classContainer, page, setPage }) {
+  const [seeProduct, setSeeProduct] = useState(false);
 
   const onClickTab = (e) => {
     if (e.target.nodeName != "BUTTON") return;
     const target = e.target.closest("li");
 
-    setTab((tabValue) => target.id);
+    setTab((prev) => target.id);
+  };
+
+  const onClickProduct = (e) => {
+    if (!e.target.closest("A")) return;
+    const target = e.target.closest("a");
+
+    console.log(target);
+
+    setSeeProduct((prev) => {
+      return {
+        render: true,
+        number: target.id - 1,
+      };
+    });
+    setPage((prev) => "");
   };
 
   return (
@@ -40,18 +56,20 @@ export default function Main({ classContainer, page }) {
           classSection={classes.section}
           classContainer={classContainer}
           data={dataMini}
-          onClick={onClickTab}
+          onClickProduct={onClickProduct}
         />
       )}
       {page === "cart" && (
         <CartSection classes={classes} classContainer={classContainer} />
       )}
-      {/* <ProductSection
-        classesMain={classes}
-        classContainer={classContainer}
-        data={data}
-        onClick={onClickTab}
-      /> */}
+      {seeProduct.render && (
+        <ProductSection
+          classesMain={classes}
+          classContainer={classContainer}
+          data={data[seeProduct.number]}
+          onClick={onClickTab}
+        />
+      )}
     </main>
   );
 }

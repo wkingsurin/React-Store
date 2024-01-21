@@ -1,11 +1,15 @@
 import { correctName } from "../../../Main";
 
-export default function Image({ classesProduct, src, alt }) {
-  const correctAlt = correctName(alt);
+export default function Image(props) {
+  const correctAlt = correctName(props.alt);
 
   return (
-    <div className={classesProduct.imageBlock}>
-      <img src={src} alt={correctAlt} className={classesProduct.image} />
+    <div className={props.classesProduct.imageBlock}>
+      <img
+        src={props.src}
+        alt={props.correctAlt}
+        className={props.classesProduct.image}
+      />
     </div>
   );
 }

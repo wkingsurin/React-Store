@@ -1,27 +1,35 @@
-export default function Table({ classesProduct, product }) {
+export default function Table(props) {
   return (
-    <div className={classesProduct.table}>
-      <div className={classesProduct.row}>
-        <div className={classesProduct.cell}>Category</div>
-        <div className={classesProduct.cell}>
-          {product.description.category}
+    <div className={props.classesProduct.table}>
+      <div className={props.classesProduct.row}>
+        <div className={props.classesProduct.cell}>Category</div>
+        <div className={props.classesProduct.cell}>
+          {props.product.description.category}
         </div>
       </div>
-      <div className={classesProduct.row}>
-        <div className={classesProduct.cell}>Model</div>
-        <div className={classesProduct.cell}>{product.description.model}</div>
+      <div className={props.classesProduct.row}>
+        <div className={props.classesProduct.cell}>Model</div>
+        <div className={props.classesProduct.cell}>
+          {props.product.description.model}
+        </div>
       </div>
-      <div className={classesProduct.row}>
-        <div className={classesProduct.cell}>Gender</div>
-        <div className={classesProduct.cell}>{product.description.gender}</div>
+      <div className={props.classesProduct.row}>
+        <div className={props.classesProduct.cell}>Gender</div>
+        <div className={props.classesProduct.cell}>
+          {props.product.description.gender}
+        </div>
       </div>
-      <div className={classesProduct.row}>
-        <div className={classesProduct.cell}>Season</div>
-        <div className={classesProduct.cell}>{product.description.season}</div>
+      <div className={props.classesProduct.row}>
+        <div className={props.classesProduct.cell}>Season</div>
+        <div className={props.classesProduct.cell}>
+          {props.product.description.season}
+        </div>
       </div>
-      <div className={classesProduct.row}>
-        <div className={classesProduct.cell}>Color</div>
-        <div className={classesProduct.cell}>{product.description.color}</div>
+      <div className={props.classesProduct.row}>
+        <div className={props.classesProduct.cell}>Color</div>
+        <div className={props.classesProduct.cell}>
+          {props.product.description.color}
+        </div>
       </div>
     </div>
   );
