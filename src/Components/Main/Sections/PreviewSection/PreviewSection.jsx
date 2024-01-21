@@ -1,10 +1,15 @@
-import FragmentSvg from "./FragmentSvg";
+import FragmentSvg from "../FragmentSvg";
+import classes from "./PreviewSection.module.scss";
 
 import { useEffect } from "react";
 
-export default function PreviewSection({ classes, classContainer, image }) {
+export default function PreviewSection({
+  classSection,
+  classContainer,
+  image,
+}) {
   return (
-    <section className={classes.section}>
+    <section className={classSection}>
       <div className={classContainer}>
         <div className={classes.sectionBlock}>
           <div className={classes.preview}>
