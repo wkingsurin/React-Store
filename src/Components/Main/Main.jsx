@@ -55,7 +55,11 @@ export default function Main(props) {
         />
       )}
       {props.page === "cart" && (
-        <CartSection classes={classes} classContainer={props.classContainer} />
+        <CartSection
+          classes={classes}
+          classContainer={props.classContainer}
+          cart={props.cart}
+        />
       )}
       {props.showProduct.render && (
         <ProductSection
@@ -63,6 +67,7 @@ export default function Main(props) {
           classContainer={props.classContainer}
           data={data[props.showProduct.id]}
           onClick={onClickTab}
+          cart={props.cart}
         />
       )}
     </main>
