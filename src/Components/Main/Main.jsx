@@ -68,6 +68,8 @@ export default function Main(props) {
           data={data[props.showProduct.id]}
           onClick={onClickTab}
           cart={props.cart}
+          zoom={props.zoom}
+          setZoom={props.setZoom}
         />
       )}
     </main>

@@ -8,8 +8,6 @@ export default function CartSection(props) {
   const classesMain = props.classes;
   const cart = props.cart;
 
-  console.log(cart);
-
   return (
     <section className={classesMain.section}>
       <div className={props.classContainer}>

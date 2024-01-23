@@ -8,6 +8,7 @@ import Main from "./Components/Main/Main";
 export default function App() {
   const [page, setPage] = useState("preview");
   const [showProduct, setShowProduct] = useState(false);
+  const [zoom, setZoom] = useState("false");
 
   const cart = [
     {
@@ -76,6 +77,8 @@ export default function App() {
         showProduct={showProduct}
         setShowProduct={setShowProduct}
         cart={cart}
+        zoom={zoom}
+        setZoom={setZoom}
       />
       {/* <Footer /> */}
     </div>

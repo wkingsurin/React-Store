@@ -3,9 +3,12 @@ import classes from "./ProductSection.module.scss";
 import Navigation from "../Navigation";
 import Gallery from "./Gallery/Gallery";
 import Description from "./Description/Description";
+import Zoom from "./Zoom";
 
 export default function ProductSection(props) {
   const product = props.data;
+
+  console.log(props.zoom);
 
   return (
     <section className={props.classesMain.section}>
@@ -23,6 +26,7 @@ export default function ProductSection(props) {
               <Description classesProduct={classes} product={product} />
             </div>
           </div>
+          {!props.zoom && <Zoom classes={classes} product={product} />}
         </div>
       </div>
     </section>
