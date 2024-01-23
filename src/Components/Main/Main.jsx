@@ -9,64 +9,59 @@ import CartSection from "./Sections/CartSection/CartSection";
 
 import data from "../../data.json";
 import dataMini from "../../data-4-items.json";
-import { compileString } from "sass";
 
 // Put it in a separate module
 export const correctName = (name) => {
   return name.split("-").join(" ");
 };
 
-export default function Main({ classContainer, page, setPage }) {
-  const [seeProduct, setSeeProduct] = useState(false);
-
+export default function Main(props) {
   const onClickTab = (e) => {
     if (e.target.nodeName != "BUTTON") return;
     const target = e.target.closest("li");
 
-    setTab((prev) => target.id);
+    props.setTab((prev) => target.id);
   };
 
   const onClickProduct = (e) => {
     if (!e.target.closest("A")) return;
     const target = e.target.closest("a");
 
-    console.log(target);
-
-    setSeeProduct((prev) => {
+    props.setShowProduct((prev) => {
       return {
         render: true,
-        number: target.id - 1,
+        id: target.id - 1,
       };
     });
-    setPage((prev) => "");
+    props.setPage((prev) => "");
   };
 
   return (
     <main className={classes.main}>
-      {page === "preview" && (
+      {props.page === "preview" && (
         <PreviewSection
           classSection={classes.section}
-          classContainer={classContainer}
+          classContainer={props.classContainer}
           image={{ src: "./sneaker.jpg", alt: "Nike Air Force" }}
         />
       )}
-      {page === "store" && (
+      {props.page === "store" && (
         <SneakersSection
           mainClasses={classes}
           classSection={classes.section}
-          classContainer={classContainer}
+          classContainer={props.classContainer}
           data={dataMini}
           onClickProduct={onClickProduct}
         />
       )}
-      {page === "cart" && (
-        <CartSection classes={classes} classContainer={classContainer} />
+      {props.page === "cart" && (
+        <CartSection classes={classes} classContainer={props.classContainer} />
       )}
-      {seeProduct.render && (
+      {props.showProduct.render && (
         <ProductSection
           classesMain={classes}
-          classContainer={classContainer}
-          data={data[seeProduct.number]}
+          classContainer={props.classContainer}
+          data={data[props.showProduct.id]}
           onClick={onClickTab}
         />
       )}

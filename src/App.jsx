@@ -7,6 +7,7 @@ import Main from "./Components/Main/Main";
 
 export default function App() {
   const [page, setPage] = useState("preview");
+  const [showProduct, setShowProduct] = useState(false);
 
   const onClickPage = (e) => {
     if (!e.target.closest("li")) return;
@@ -15,6 +16,12 @@ export default function App() {
     // Add loading animation
     setTimeout(() => {
       setPage((pageValue) => target.id);
+      setShowProduct((showProductValue) => {
+        return {
+          render: false,
+          id: "",
+        };
+      });
     }, 500);
     console.log(target.id);
   };
@@ -22,7 +29,13 @@ export default function App() {
   return (
     <div className={classes.wrapper}>
       <Header onClick={onClickPage} classContainer={classes.container} />
-      <Main classContainer={classes.container} page={page} setPage={setPage} />
+      <Main
+        classContainer={classes.container}
+        page={page}
+        setPage={setPage}
+        showProduct={showProduct}
+        setShowProduct={setShowProduct}
+      />
       {/* <Footer /> */}
     </div>
   );

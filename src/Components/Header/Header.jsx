@@ -3,10 +3,10 @@ import classes from "./Header.module.scss";
 import StoreSvg from "./StoreSvg";
 import CartSvg from "./CartSvg";
 
-export default function Header({ classContainer, onClick }) {
+export default function Header(props) {
   return (
-    <header onClick={(e) => onClick(e)} className={classes.header}>
-      <div className={classContainer}>
+    <header onClick={(e) => props.onClick(e)} className={classes.header}>
+      <div className={props.classContainer}>
         <div className={classes.block}>
           <nav className={classes.nav}>
             <ul className={classes.list}>

@@ -126,6 +126,17 @@
   display: flex;
   align-items: center;
 
+  & > * {
+    transition: var(--trans03s);
+  }
+  & > *:hover {
+    background: var(--gr);
+
+    .path {
+      fill: white;
+    }
+  }
+
   & > *:not(:last-child) {
     margin-right: 7px;
   }
@@ -171,6 +182,7 @@
   height: 20px;
 }
 .path {
+  transition: var(--trans03s);
   fill: var(--gr);
 }
 
@@ -192,5 +204,11 @@
   background: var(--gr);
   border-radius: var(--rad11);
 
+  transition: var(--trans03s);
+
   cursor: pointer;
+
+  &:hover {
+    border-radius: var(--rad50);
+  }
 }

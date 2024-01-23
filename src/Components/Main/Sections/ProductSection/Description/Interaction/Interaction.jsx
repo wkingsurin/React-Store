@@ -10,7 +10,7 @@ export default function Interaction({ classesProduct, value }) {
         >
           <DecrementSvg classesProduct={classesProduct} />
         </div>
-        <div className={classesProduct.input}>{1 || value}</div>
+        <div className={classesProduct.input}>{value || 1}</div>
         <div
           className={`${classesProduct.increment} ${classesProduct.iconBlock}`}
         >

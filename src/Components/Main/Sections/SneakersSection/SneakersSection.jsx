@@ -11,12 +11,7 @@ export default function SneakersSection(props) {
     <section className={props.classSection}>
       <div className={props.classContainer}>
         <div className={classes.sectionBlock}>
-          <Navigation
-            onClick={props.onClick}
-            tab={props.tab}
-            setTab={props.setTab}
-            classes={props.mainClasses}
-          >
+          <Navigation classes={props.mainClasses}>
             <Li classes={props.mainClasses} active={false} text={"Main"} />
             <Li classes={props.mainClasses} active={true} text={"Sneakers"} />
           </Navigation>
