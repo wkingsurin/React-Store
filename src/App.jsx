@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import classes from "./App.module.scss";
 
+import { headerActiveClass } from "./Components/Header/Header";
 import Header from "./Components/Header/Header";
 import Main from "./Components/Main/Main";
 
@@ -56,15 +57,29 @@ export default function App() {
     const target = e.target.closest("li");
 
     // Add loading animation
-    setTimeout(() => {
-      setPage((pageValue) => target.id);
-      setShowProduct((showProductValue) => {
-        return {
-          render: false,
-          id: "",
-        };
+    setPage((pageValue) => {
+      const buttons = Array.from(target.closest("ul").children);
+
+      buttons.forEach((button) => {
+        const path = button.querySelector("path");
+
+        if (button.id != target.id) {
+          button.classList.remove(headerActiveClass);
+          return;
+        }
+        button.classList.add(headerActiveClass);
       });
-    }, 500);
+
+      return target.id;
+    });
+    setShowProduct((showProductValue) => {
+      return {
+        render: false,
+        id: "",
+      };
+    });
+    // setTimeout(() => {
+    // }, 500);
   };
 
   return (

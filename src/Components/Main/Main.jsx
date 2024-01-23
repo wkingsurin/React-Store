@@ -12,7 +12,13 @@ import dataMini from "../../data-4-items.json";
 
 // Put it in a separate module
 export const correctName = (name) => {
-  return name.split("-").join(" ");
+  // return name.split("-").join(" ");
+  return name
+    .split("-")
+    .map((word) => {
+      return word.toLowerCase() == "xxxvii" ? word.toUpperCase() : word;
+    })
+    .join(" ");
 };
 
 export default function Main(props) {
@@ -51,7 +57,7 @@ export default function Main(props) {
       )}
       {props.page === "store" && (
         <SneakersSection
-          mainClasses={classes}
+          classesMain={classes}
           classSection={classes.section}
           classContainer={props.classContainer}
           data={dataMini}

@@ -1,11 +1,14 @@
 import Table from "./Table";
 import Interaction from "./Interaction/Interaction";
 
-export default function Description({ classesProduct, product }) {
+export default function Description(props) {
+  const classesProduct = props.classesProduct;
+  const product = props.product;
+
   return (
     <div className={classesProduct.description}>
       <div className={classesProduct.col}>
-        <h2 className={classesProduct.name}>{product.name}</h2>
+        <h2 className={classesProduct.name}>{props.productName}</h2>
         <Table classesProduct={classesProduct} product={product} />
       </div>
       <div className={classesProduct.col}>

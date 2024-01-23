@@ -1,8 +1,11 @@
 import Interaction from "../ProductSection/Description/Interaction/Interaction";
 
+import { correctName } from "../../Main";
+
 export default function Item(props) {
   const classes = props.classes;
   const product = props.product;
+  const name = correctName(product.name);
 
   return (
     <div className={classes.item}>
@@ -12,7 +15,7 @@ export default function Item(props) {
       <div className={classes.descriptionBlock}>
         <div className={classes.description}>
           <a href={"#"} className={classes.name}>
-            {product.name}
+            {name}
           </a>
           <p className={classes.text}>Size: {`${product.sizes[0]}`}</p>
         </div>

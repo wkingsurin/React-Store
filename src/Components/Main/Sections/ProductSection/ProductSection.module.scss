@@ -25,10 +25,26 @@
   }
 
   .imageBlock {
+    position: relative;
+
     display: flex;
     max-width: 111px;
     max-height: 83px;
-    border-radius: var(--rad30);
+    border-radius: var(--rad15);
+
+    cursor: pointer;
+  }
+  .overlay {
+    display: none;
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--b50);
+    border-radius: var(--rad15);
+
+    transition: var(--trans03s);
   }
   .image {
     width: 100%;

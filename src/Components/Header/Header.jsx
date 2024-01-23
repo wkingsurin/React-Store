@@ -3,6 +3,8 @@ import classes from "./Header.module.scss";
 import StoreSvg from "./StoreSvg";
 import CartSvg from "./CartSvg";
 
+export const headerActiveClass = classes.active;
+
 export default function Header(props) {
   return (
     <header onClick={(e) => props.onClick(e)} className={classes.header}>

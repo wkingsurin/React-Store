@@ -26,6 +26,9 @@
   }
 }
 .li {
+  border-radius: var(--rad50);
+
+  transition: var(--trans03s);
 }
 .button {
   position: relative;
@@ -41,10 +44,7 @@
   outline: none;
   border: none;
 
-  border-radius: var(--rad50);
   cursor: pointer;
-
-  transition: var(--trans03s);
 }
 
 .icon {

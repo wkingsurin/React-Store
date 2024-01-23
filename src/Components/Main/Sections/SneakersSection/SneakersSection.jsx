@@ -11,9 +11,19 @@ export default function SneakersSection(props) {
     <section className={props.classSection}>
       <div className={props.classContainer}>
         <div className={classes.sectionBlock}>
-          <Navigation classes={props.mainClasses}>
-            <Li classes={props.mainClasses} active={false} text={"Main"} />
-            <Li classes={props.mainClasses} active={true} text={"Sneakers"} />
+          <Navigation classes={props.classesMain}>
+            <Li
+              classes={props.classesMain}
+              active={false}
+              text={"Main"}
+              id="main"
+            />
+            <Li
+              classes={props.classesMain}
+              active={true}
+              text={"Sneakers"}
+              id="sneakers"
+            />
           </Navigation>
           <div className={classes.sneakers}>
             <div className={classes.sectionContent}>
