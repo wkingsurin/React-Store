@@ -8,8 +8,6 @@ import Zoom from "./Zoom";
 export default function ProductSection(props) {
   const product = props.data;
 
-  console.log(props.zoom);
-
   return (
     <section className={props.classesMain.section}>
       <div className={props.classContainer}>

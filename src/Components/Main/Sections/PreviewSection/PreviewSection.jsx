@@ -5,6 +5,7 @@ export default function PreviewSection({
   classSection,
   classContainer,
   image,
+  onClickShop,
 }) {
   return (
     <section className={classSection}>
@@ -23,7 +24,14 @@ export default function PreviewSection({
                 The <span className={classes.titleGreen}>best choise</span> for
                 your feet
               </h2>
-              <button className={classes.buyButton}>Buy</button>
+              <button
+                onClick={(e) => {
+                  onClickShop();
+                }}
+                className={classes.buyButton}
+              >
+                Shop
+              </button>
             </div>
             <div className={classes.imageBlock}>
               <img className={classes.image} src={image.src} alt={image.alt} />

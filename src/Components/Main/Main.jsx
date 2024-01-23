@@ -35,6 +35,9 @@ export default function Main(props) {
     });
     props.setPage((prev) => "");
   };
+  const onClickShop = (e) => {
+    props.setPage((prev) => "store");
+  };
 
   return (
     <main className={classes.main}>
@@ -43,6 +46,7 @@ export default function Main(props) {
           classSection={classes.section}
           classContainer={props.classContainer}
           image={{ src: "./sneaker.jpg", alt: "Nike Air Force" }}
+          onClickShop={onClickShop}
         />
       )}
       {props.page === "store" && (
