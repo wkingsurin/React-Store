@@ -8,6 +8,7 @@ import Description from "./Description/Description";
 import Zoom from "./Zoom";
 
 import { correctName } from "../../../../Modules/correctName";
+import { onClickInteraction } from "../../../../Handlers/onClickInteraction";
 
 export default function ProductSection(props) {
   const classesMain = props.classesMain;
@@ -43,6 +44,9 @@ export default function ProductSection(props) {
             <div className={classes.sectionContent}>
               <Gallery classesProduct={classes} product={product} />
               <Description
+                onClickInteraction={onClickInteraction}
+                productAmount={props.productAmount}
+                setProductAmount={props.setProductAmount}
                 classesProduct={classes}
                 product={product}
                 productName={productName}

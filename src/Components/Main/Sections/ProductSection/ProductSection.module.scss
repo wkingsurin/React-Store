@@ -189,9 +189,10 @@
   border-radius: var(--rad13);
   box-sizing: border-box;
 
-  //   cursor: pointer;
+  cursor: text;
 }
 .increment {
+  background: transparent;
 }
 .icon {
   width: 20px;

@@ -1,4 +1,8 @@
+import { correctName } from "../../../../../Modules/correctName";
+
 export default function Table(props) {
+  const model = correctName(props.product.description.model);
+
   return (
     <div className={props.classesProduct.table}>
       <div className={props.classesProduct.row}>
@@ -9,9 +13,7 @@ export default function Table(props) {
       </div>
       <div className={props.classesProduct.row}>
         <div className={props.classesProduct.cell}>Model</div>
-        <div className={props.classesProduct.cell}>
-          {props.product.description.model}
-        </div>
+        <div className={props.classesProduct.cell}>{model}</div>
       </div>
       <div className={props.classesProduct.row}>
         <div className={props.classesProduct.cell}>Gender</div>

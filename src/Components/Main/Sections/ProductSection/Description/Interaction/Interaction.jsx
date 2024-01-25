@@ -7,20 +7,24 @@ export default function Interaction(props) {
   return (
     <div className={classesProduct.interaction}>
       <div className={classesProduct.buttons}>
-        <div
+        <button
           className={`${classesProduct.decrement} ${classesProduct.iconBlock}`}
+          id="decrement"
         >
           <DecrementSvg classesProduct={classesProduct} />
-        </div>
+        </button>
         <div className={classesProduct.input}>{props.value || 1}</div>
-        <div
+        <button
           className={`${classesProduct.increment} ${classesProduct.iconBlock}`}
+          id="increment"
         >
           <IncrementSvg classesProduct={classesProduct} />
-        </div>
+        </button>
       </div>
       {props.removeBtn && (
-        <button className={classesProduct.removeBtn}>Remove</button>
+        <button className={classesProduct.removeBtn} id="remove">
+          Remove
+        </button>
       )}
     </div>
   );

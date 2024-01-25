@@ -6,7 +6,10 @@ export default function Description(props) {
   const product = props.product;
 
   return (
-    <div className={classesProduct.description}>
+    <div
+      onClick={(e) => props.onClickInteraction(e, props.setProductAmount)}
+      className={classesProduct.description}
+    >
       <div className={classesProduct.col}>
         <h2 className={classesProduct.name}>{props.productName}</h2>
         <Table classesProduct={classesProduct} product={product} />
@@ -16,7 +19,10 @@ export default function Description(props) {
           <span className={classesProduct.currency}>{"$"}</span>
           <span className={classesProduct.value}>{product.price}</span>
         </div>
-        <Interaction classesProduct={classesProduct} value={4} />
+        <Interaction
+          classesProduct={classesProduct}
+          value={props.productAmount}
+        />
         <button className={classesProduct.buyButton}>To cart</button>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { onClickList, onClickProduct, onClickShop } from "../../Handlers/index";
 
 import classes from "./Main.module.scss";
@@ -11,6 +12,8 @@ import data from "../../data.json";
 import dataMini from "../../data-4-items.json";
 
 export default function Main(props) {
+  const [productAmount, setProductAmount] = useState(1);
+
   return (
     <main className={classes.main}>
       {props.page === "preview" && (
@@ -47,6 +50,8 @@ export default function Main(props) {
           setPage={props.setPage}
           onClickList={onClickList}
           setShowProduct={props.setShowProduct}
+          productAmount={productAmount}
+          setProductAmount={setProductAmount}
         />
       )}
       {props.showProduct.render && (
@@ -62,6 +67,8 @@ export default function Main(props) {
           setPage={props.setPage}
           setShowProduct={props.setShowProduct}
           onClickList={onClickList}
+          productAmount={productAmount}
+          setProductAmount={setProductAmount}
         />
       )}
     </main>
