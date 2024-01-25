@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { onClickPage } from "./Handlers/index";
 
 import classes from "./App.module.scss";
 
-import { headerActiveClass } from "./Components/Header/Header";
 import Header from "./Components/Header/Header";
 import Main from "./Components/Main/Main";
 
@@ -10,6 +10,8 @@ export default function App() {
   const [page, setPage] = useState("preview");
   const [showProduct, setShowProduct] = useState(false);
   const [zoom, setZoom] = useState("false");
+
+  const listRef = useRef(null);
 
   const cart = [
     {
@@ -52,40 +54,17 @@ export default function App() {
     },
   ];
 
-  const onClickPage = (e) => {
-    if (!e.target.closest("li")) return;
-    const target = e.target.closest("li");
-
-    // Add loading animation
-    setPage((pageValue) => {
-      const buttons = Array.from(target.closest("ul").children);
-
-      buttons.forEach((button) => {
-        const path = button.querySelector("path");
-
-        if (button.id != target.id) {
-          button.classList.remove(headerActiveClass);
-          return;
-        }
-        button.classList.add(headerActiveClass);
-      });
-
-      return target.id;
-    });
-    setShowProduct((showProductValue) => {
-      return {
-        render: false,
-        id: "",
-      };
-    });
-    // setTimeout(() => {
-    // }, 500);
-  };
-
   return (
     <div className={classes.wrapper}>
-      <Header onClick={onClickPage} classContainer={classes.container} />
+      <Header
+        listRef={listRef}
+        onClick={onClickPage}
+        classContainer={classes.container}
+        setPage={setPage}
+        setShowProduct={setShowProduct}
+      />
       <Main
+        listRef={listRef}
         classContainer={classes.container}
         page={page}
         setPage={setPage}
@@ -95,7 +74,6 @@ export default function App() {
         zoom={zoom}
         setZoom={setZoom}
       />
-      {/* <Footer /> */}
     </div>
   );
 }

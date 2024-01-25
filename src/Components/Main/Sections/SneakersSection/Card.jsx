@@ -4,7 +4,9 @@ export default function Card(props) {
       <div className={props.classes.card}>
         <a
           id={props.id}
-          onClick={(e) => props.onClickProduct(e)}
+          onClick={(e) =>
+            props.onClickProduct(e, props.setShowProduct, props.setPage)
+          }
           href={"#"}
           className={props.classes.imageBlock}
         >

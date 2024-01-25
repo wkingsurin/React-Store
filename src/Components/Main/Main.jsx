@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { onClickList, onClickProduct, onClickShop } from "../../Handlers/index";
 
 import classes from "./Main.module.scss";
 
@@ -10,68 +10,22 @@ import CartSection from "./Sections/CartSection/CartSection";
 import data from "../../data.json";
 import dataMini from "../../data-4-items.json";
 
-// Put it in a separate module
-export const correctName = (name) => {
-  // return name.split("-").join(" ");
-  return name
-    .split("-")
-    .map((word) => {
-      return word.toLowerCase() == "xxxvii" ? word.toUpperCase() : word;
-    })
-    .join(" ");
-};
-
 export default function Main(props) {
-  const onClickTab = (e) => {
-    if (e.target.nodeName != "BUTTON") return;
-    const target = e.target.closest("li");
-
-    props.setTab((prev) => target.id);
-  };
-
-  const onClickList = (e) => {
-    if (!e.target.closest("li")) return;
-    const target = e.target.closest("li");
-
-    if (!target.id) return;
-
-    props.setShowProduct((prev) => {
-      return {
-        redner: false,
-        id: "",
-      };
-    });
-    props.setPage(target.id);
-  };
-
-  const onClickProduct = (e) => {
-    if (!e.target.closest("A")) return;
-    const target = e.target.closest("a");
-
-    props.setShowProduct((prev) => {
-      return {
-        render: true,
-        id: target.id - 1,
-      };
-    });
-    props.setPage((prev) => "");
-  };
-  const onClickShop = (e) => {
-    props.setPage((prev) => "store");
-  };
-
   return (
     <main className={classes.main}>
       {props.page === "preview" && (
         <PreviewSection
+          listRef={props.listRef}
           classSection={classes.section}
           classContainer={props.classContainer}
           image={{ src: "./sneaker.jpg", alt: "Nike Air Force" }}
           onClickShop={onClickShop}
+          setPage={props.setPage}
         />
       )}
       {props.page === "store" && (
         <SneakersSection
+          listRef={props.listRef}
           classesMain={classes}
           classSection={classes.section}
           classContainer={props.classContainer}
@@ -79,30 +33,34 @@ export default function Main(props) {
           onClickProduct={onClickProduct}
           page={props.page}
           setPage={props.setPage}
+          setShowProduct={props.setShowProduct}
           onClickList={onClickList}
         />
       )}
       {props.page === "cart" && (
         <CartSection
+          listRef={props.listRef}
           classes={classes}
           classContainer={props.classContainer}
           cart={props.cart}
           page={props.page}
           setPage={props.setPage}
           onClickList={onClickList}
+          setShowProduct={props.setShowProduct}
         />
       )}
       {props.showProduct.render && (
         <ProductSection
+          listRef={props.listRef}
           classesMain={classes}
           classContainer={props.classContainer}
           data={data[props.showProduct.id]}
-          onClick={onClickTab}
           cart={props.cart}
           zoom={props.zoom}
           setZoom={props.setZoom}
           page={props.page}
           setPage={props.setPage}
+          setShowProduct={props.setShowProduct}
           onClickList={onClickList}
         />
       )}

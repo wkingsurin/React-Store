@@ -6,6 +6,8 @@ export default function PreviewSection({
   classContainer,
   image,
   onClickShop,
+  setPage,
+  listRef,
 }) {
   return (
     <section className={classSection}>
@@ -26,7 +28,7 @@ export default function PreviewSection({
               </h2>
               <button
                 onClick={(e) => {
-                  onClickShop();
+                  onClickShop(e, setPage, listRef);
                 }}
                 className={classes.buyButton}
               >

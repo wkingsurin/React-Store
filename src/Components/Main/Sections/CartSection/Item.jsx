@@ -1,6 +1,6 @@
 import Interaction from "../ProductSection/Description/Interaction/Interaction";
 
-import { correctName } from "../../Main";
+import { correctName } from "../../../../Modules/correctName";
 
 export default function Item(props) {
   const classes = props.classes;

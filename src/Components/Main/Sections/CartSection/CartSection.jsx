@@ -1,7 +1,7 @@
 import classes from "./CartSection.module.scss";
 
-import Navigation from "../Navigation";
-import Li from "../Li";
+import Navigation from "../Navigation/Navigation";
+import Li from "../Navigation/Li";
 
 import Item from "./Item";
 import Order from "./Order";
@@ -14,7 +14,13 @@ export default function CartSection(props) {
     <section className={classesMain.section}>
       <div className={props.classContainer}>
         <div className={classesMain.sectionBlock}>
-          <Navigation classes={classesMain} onClickList={props.onClickList}>
+          <Navigation
+            listRef={props.listRef}
+            classes={classesMain}
+            onClickList={props.onClickList}
+            setPage={props.setPage}
+            setShowProduct={props.setShowProduct}
+          >
             <Li
               classes={classesMain}
               active={false}

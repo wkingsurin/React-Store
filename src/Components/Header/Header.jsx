@@ -7,11 +7,22 @@ export const headerActiveClass = classes.active;
 
 export default function Header(props) {
   return (
-    <header onClick={(e) => props.onClick(e)} className={classes.header}>
+    <header
+      onClick={(e) =>
+        props.onClick(
+          e,
+          props.setPage,
+          props.setShowProduct,
+          headerActiveClass,
+          props.listRef
+        )
+      }
+      className={classes.header}
+    >
       <div className={props.classContainer}>
         <div className={classes.block}>
           <nav className={classes.nav}>
-            <ul className={classes.list}>
+            <ul ref={props.listRef} className={classes.list}>
               <li id="store" className={classes.li}>
                 <button className={`${classes.button}`}>
                   <StoreSvg classIcon={classes.icon} classPath={classes.path} />

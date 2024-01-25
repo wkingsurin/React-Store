@@ -1,10 +1,10 @@
 import classes from "./SneakersSection.module.scss";
 
-import { correctName } from "../../Main";
+import { correctName } from "../../../../Modules/correctName";
 
 import Card from "./Card";
-import Navigation from "../Navigation";
-import Li from "../Li";
+import Navigation from "../Navigation/Navigation";
+import Li from "../Navigation/Li";
 
 export default function SneakersSection(props) {
   return (
@@ -12,8 +12,11 @@ export default function SneakersSection(props) {
       <div className={props.classContainer}>
         <div className={classes.sectionBlock}>
           <Navigation
+            listRef={props.listRef}
             classes={props.classesMain}
             onClickList={props.onClickList}
+            setPage={props.setPage}
+            setShowProduct={props.setShowProduct}
           >
             <Li
               classes={props.classesMain}
@@ -44,6 +47,8 @@ export default function SneakersSection(props) {
                       src={item.src}
                       alt={item.name}
                       onClickProduct={props.onClickProduct}
+                      setPage={props.setPage}
+                      setShowProduct={props.setShowProduct}
                     />
                   );
                 })}

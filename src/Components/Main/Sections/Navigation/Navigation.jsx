@@ -6,7 +6,9 @@ export default function Navigation(props) {
   return (
     <nav
       className={classes.navigationBlock}
-      onClick={(e) => props.onClickList(e)}
+      onClick={(e) =>
+        props.onClickList(e, props.setPage, props.setShowProduct, props.listRef)
+      }
     >
       <ul className={classes.navigationList}>{props.children}</ul>
     </nav>

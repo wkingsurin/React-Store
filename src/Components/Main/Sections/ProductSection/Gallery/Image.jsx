@@ -1,4 +1,4 @@
-import { correctName } from "../../../Main";
+import { correctName } from "../../../../../Modules/correctName";
 
 export default function Image(props) {
   const correctAlt = correctName(props.alt);
