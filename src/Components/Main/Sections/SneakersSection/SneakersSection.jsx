@@ -11,18 +11,21 @@ export default function SneakersSection(props) {
     <section className={props.classSection}>
       <div className={props.classContainer}>
         <div className={classes.sectionBlock}>
-          <Navigation classes={props.classesMain}>
+          <Navigation
+            classes={props.classesMain}
+            onClickList={props.onClickList}
+          >
             <Li
               classes={props.classesMain}
               active={false}
               text={"Main"}
-              id="main"
+              id="preview"
             />
             <Li
               classes={props.classesMain}
               active={true}
               text={"Sneakers"}
-              id="sneakers"
+              id="store"
             />
           </Navigation>
           <div className={classes.sneakers}>

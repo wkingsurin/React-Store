@@ -29,6 +29,21 @@ export default function Main(props) {
     props.setTab((prev) => target.id);
   };
 
+  const onClickList = (e) => {
+    if (!e.target.closest("li")) return;
+    const target = e.target.closest("li");
+
+    if (!target.id) return;
+
+    props.setShowProduct((prev) => {
+      return {
+        redner: false,
+        id: "",
+      };
+    });
+    props.setPage(target.id);
+  };
+
   const onClickProduct = (e) => {
     if (!e.target.closest("A")) return;
     const target = e.target.closest("a");
@@ -62,6 +77,9 @@ export default function Main(props) {
           classContainer={props.classContainer}
           data={dataMini}
           onClickProduct={onClickProduct}
+          page={props.page}
+          setPage={props.setPage}
+          onClickList={onClickList}
         />
       )}
       {props.page === "cart" && (
@@ -69,6 +87,9 @@ export default function Main(props) {
           classes={classes}
           classContainer={props.classContainer}
           cart={props.cart}
+          page={props.page}
+          setPage={props.setPage}
+          onClickList={onClickList}
         />
       )}
       {props.showProduct.render && (
@@ -80,6 +101,9 @@ export default function Main(props) {
           cart={props.cart}
           zoom={props.zoom}
           setZoom={props.setZoom}
+          page={props.page}
+          setPage={props.setPage}
+          onClickList={onClickList}
         />
       )}
     </main>

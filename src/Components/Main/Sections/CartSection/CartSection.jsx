@@ -14,8 +14,13 @@ export default function CartSection(props) {
     <section className={classesMain.section}>
       <div className={props.classContainer}>
         <div className={classesMain.sectionBlock}>
-          <Navigation classes={classesMain}>
-            <Li classes={classesMain} active={false} text={"Main"} id="main" />
+          <Navigation classes={classesMain} onClickList={props.onClickList}>
+            <Li
+              classes={classesMain}
+              active={false}
+              text={"Main"}
+              id="preview"
+            />
             <Li classes={classesMain} active={true} text={"Cart"} id="cart" />
           </Navigation>
           <div className={classes.cart}>
