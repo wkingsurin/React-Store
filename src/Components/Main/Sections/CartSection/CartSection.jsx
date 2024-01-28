@@ -8,7 +8,7 @@ import Order from "./Order";
 
 export default function CartSection(props) {
   const classesMain = props.classes;
-  const cart = props.cart;
+  const cart = JSON.parse(props.cart);
 
   return (
     <section className={classesMain.section}>
@@ -34,7 +34,14 @@ export default function CartSection(props) {
             <div className={classes.sectionContent}>
               <div className={classes.items}>
                 {cart.map((item, index) => {
-                  return <Item key={index} classes={classes} product={item} />;
+                  return (
+                    <Item
+                      key={index}
+                      classes={classes}
+                      product={item}
+                      amount={item.amount || 1}
+                    />
+                  );
                 })}
               </div>
               <Order classes={classes} />

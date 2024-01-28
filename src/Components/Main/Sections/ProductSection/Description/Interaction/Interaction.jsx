@@ -13,7 +13,7 @@ export default function Interaction(props) {
         >
           <DecrementSvg classesProduct={classesProduct} />
         </button>
-        <div className={classesProduct.input}>{props.value || 1}</div>
+        <div className={classesProduct.input}>{props.amount}</div>
         <button
           className={`${classesProduct.increment} ${classesProduct.iconBlock}`}
           id="increment"

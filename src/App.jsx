@@ -7,13 +7,20 @@ import Header from "./Components/Header/Header";
 import Main from "./Components/Main/Main";
 
 export default function App() {
+  // for tests
+  document.addEventListener("keydown", (e) => {
+    if (e.key == "F5") {
+      localStorage.clear();
+    }
+  });
+
   const [page, setPage] = useState("preview");
   const [showProduct, setShowProduct] = useState(false);
   const [zoom, setZoom] = useState("false");
 
   const listRef = useRef(null);
 
-  const cart = [
+  const cartToJSON = [
     {
       name: "nike-air-jordan-xxxvii",
       src: "./nike-air-jordan-xxxvii-w1/1.jpg",
@@ -32,6 +39,7 @@ export default function App() {
         color: "white",
       },
       sizes: [44],
+      amount: 1,
     },
     {
       name: "nike-air-jordan-xxxvii",
@@ -51,8 +59,13 @@ export default function App() {
         color: "white",
       },
       sizes: [44],
+      amount: 1,
     },
   ];
+  if (!localStorage.getItem("cart")) {
+    localStorage.setItem("cart", JSON.stringify(cartToJSON));
+  }
+  const cart = localStorage.getItem("cart");
 
   return (
     <div className={classes.wrapper}>

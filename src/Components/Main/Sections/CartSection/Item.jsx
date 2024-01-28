@@ -24,7 +24,11 @@ export default function Item(props) {
             <span className={classes.currency}>{"$"}</span>
             <span className={classes.value}>{product.price}</span>
           </div>
-          <Interaction classesProduct={classes} removeBtn={true} />
+          <Interaction
+            classesProduct={classes}
+            removeBtn={true}
+            amount={props.amount || 1}
+          />
         </div>
       </div>
     </div>

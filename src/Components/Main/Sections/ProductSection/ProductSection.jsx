@@ -1,3 +1,4 @@
+import { useState } from "react";
 import classes from "./ProductSection.module.scss";
 
 import Navigation from "../Navigation/Navigation";
@@ -11,9 +12,15 @@ import { correctName } from "../../../../Modules/correctName";
 import { onClickInteraction } from "../../../../Handlers/onClickInteraction";
 
 export default function ProductSection(props) {
+  const [productAmount, setProductAmount] = useState(1);
+
   const classesMain = props.classesMain;
   const product = props.data;
   const productName = correctName(product.name);
+
+  const onClickMain = (e) => {
+    props.setZoom((prev) => !prev);
+  };
 
   return (
     <section className={classesMain.section}>
@@ -42,14 +49,19 @@ export default function ProductSection(props) {
           </Navigation>
           <div className={classes.product}>
             <div className={classes.sectionContent}>
-              <Gallery classesProduct={classes} product={product} />
+              <Gallery
+                classesProduct={classes}
+                product={product}
+                onClickMain={onClickMain}
+              />
               <Description
                 onClickInteraction={onClickInteraction}
-                productAmount={props.productAmount}
-                setProductAmount={props.setProductAmount}
+                productAmount={productAmount}
+                setProductAmount={setProductAmount}
                 classesProduct={classes}
                 product={product}
                 productName={productName}
+                cart={props.cart}
               />
             </div>
           </div>

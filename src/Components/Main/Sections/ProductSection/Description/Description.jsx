@@ -7,7 +7,15 @@ export default function Description(props) {
 
   return (
     <div
-      onClick={(e) => props.onClickInteraction(e, props.setProductAmount)}
+      onClick={(e) =>
+        props.onClickInteraction(
+          e,
+          props.setProductAmount,
+          props.productAmount,
+          product,
+          props.cart
+        )
+      }
       className={classesProduct.description}
     >
       <div className={classesProduct.col}>
@@ -21,9 +29,11 @@ export default function Description(props) {
         </div>
         <Interaction
           classesProduct={classesProduct}
-          value={props.productAmount}
+          amount={props.productAmount}
         />
-        <button className={classesProduct.buyButton}>To cart</button>
+        <button className={classesProduct.buyButton} id={"toCart"}>
+          To cart
+        </button>
       </div>
     </div>
   );

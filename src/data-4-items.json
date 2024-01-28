@@ -15,7 +15,9 @@
       "gender": "male",
       "season": "summer",
       "color": "white"
-    }
+    },
+    "sizes": "[44]",
+    "amount": 1
   },
   {
     "name": "nike-air-jordan-xxxvii",
@@ -33,7 +35,9 @@
       "gender": "male",
       "season": "summer",
       "color": "white"
-    }
+    },
+    "sizes": "[44]",
+    "amount": 1
   },
   {
     "name": "nike-air-jordan-4-retro",
@@ -52,7 +56,9 @@
       "gender": "female",
       "season": "demi",
       "color": "white"
-    }
+    },
+    "sizes": "[44]",
+    "amount": 1
   },
   {
     "name": "nike-air-raid",
@@ -70,6 +76,8 @@
       "gender": "male",
       "season": "demi",
       "color": "black"
-    }
+    },
+    "sizes": "[44]",
+    "amount": 1
   }
 ]

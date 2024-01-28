@@ -8,6 +8,7 @@ export default function Gallery(props) {
       <ImagesMain
         classesProduct={props.classesProduct}
         product={props.product}
+        onClickMain={props.onClickMain}
       />
     </div>
   );

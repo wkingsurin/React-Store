@@ -2,7 +2,7 @@ import Image from "./Image";
 
 export default function ImagesMain(props) {
   return (
-    <div className={props.classesProduct.mainImage}>
+    <div onClick={props.onClickMain} className={props.classesProduct.mainImage}>
       <Image
         classesProduct={props.classesProduct}
         src={props.product.src}
