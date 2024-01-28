@@ -7,16 +7,19 @@ import Header from "./Components/Header/Header";
 import Main from "./Components/Main/Main";
 
 export default function App() {
-  // for tests
   document.addEventListener("keydown", (e) => {
+    // for tests
     if (e.key == "F5") {
       localStorage.clear();
+    }
+    if (e.key == "Escape") {
+      setZoom(false);
     }
   });
 
   const [page, setPage] = useState("preview");
   const [showProduct, setShowProduct] = useState(false);
-  const [zoom, setZoom] = useState("false");
+  const [zoom, setZoom] = useState(false);
 
   const listRef = useRef(null);
 

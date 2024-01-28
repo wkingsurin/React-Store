@@ -11,16 +11,16 @@ import Zoom from "./Zoom";
 import { correctName } from "../../../../Modules/correctName";
 import { onClickInteraction } from "../../../../Handlers/onClickInteraction";
 
+import { onClickMainImage } from "../../../../Handlers/onClickMainImage";
+import { onClickZoomedImage } from "../../../../Handlers/onClickZoomedImage";
+
 export default function ProductSection(props) {
+  const [activeImageSrc, setActiveImageSrc] = useState(props.data.src);
   const [productAmount, setProductAmount] = useState(1);
 
   const classesMain = props.classesMain;
   const product = props.data;
   const productName = correctName(product.name);
-
-  const onClickMain = (e) => {
-    props.setZoom((prev) => !prev);
-  };
 
   return (
     <section className={classesMain.section}>
@@ -52,7 +52,10 @@ export default function ProductSection(props) {
               <Gallery
                 classesProduct={classes}
                 product={product}
-                onClickMain={onClickMain}
+                onClickMainImage={onClickMainImage}
+                activeImageSrc={activeImageSrc}
+                setActiveImageSrc={setActiveImageSrc}
+                setZoom={props.setZoom}
               />
               <Description
                 onClickInteraction={onClickInteraction}
@@ -65,7 +68,15 @@ export default function ProductSection(props) {
               />
             </div>
           </div>
-          {!props.zoom && <Zoom classes={classes} product={product} />}
+          {props.zoom && (
+            <Zoom
+              classes={classes}
+              activeImageSrc={activeImageSrc}
+              product={product}
+              onClickZoomedImage={onClickZoomedImage}
+              setZoom={props.setZoom}
+            />
+          )}
         </div>
       </div>
     </section>

@@ -33,6 +33,13 @@
     border-radius: var(--rad15);
 
     cursor: pointer;
+
+    outline: 2px solid transparent;
+    transition: var(--trans03s);
+
+    &:hover {
+      outline: 2px solid var(--hvrd-img);
+    }
   }
   .overlay {
     display: none;

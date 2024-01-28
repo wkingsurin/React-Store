@@ -5,9 +5,18 @@ export default function Zoom(props) {
   const product = props.product;
 
   return (
-    <div className={classes.zoom}>
+    <div
+      className={classes.zoom}
+      onClick={(e) => {
+        props.onClickZoomedImage(e, props.setZoom);
+      }}
+    >
       <div className={classes.imageBlock}>
-        <img src={product.src} alt={product.alt} className={classes.image} />
+        <img
+          src={props.activeImageSrc}
+          alt={product.alt}
+          className={classes.image}
+        />
       </div>
       <button className={classes.closeButton}>
         <CloseSvg classes={classes} />
