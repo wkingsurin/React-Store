@@ -32,19 +32,27 @@ export default function CartSection(props) {
           <div className={classes.cart}>
             <h2 className={classes.title}>Cart</h2>
             <div className={classes.sectionContent}>
-              <div className={classes.items}>
-                {cart.map((item, index) => {
-                  return (
-                    <Item
-                      key={index}
-                      classes={classes}
-                      product={item}
-                      amount={item.amount || 1}
-                    />
-                  );
-                })}
-              </div>
-              <Order classes={classes} />
+              {cart.length > 0 ? (
+                <>
+                  <div className={classes.items}>
+                    {cart.map((item, index) => {
+                      return (
+                        <Item
+                          key={index}
+                          classes={classes}
+                          product={item}
+                          amount={item.amount || 1}
+                        />
+                      );
+                    })}
+                  </div>
+                  <Order classes={classes} />
+                </>
+              ) : (
+                <div className={classes.emptyCart}>
+                  <p>Select a product</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
