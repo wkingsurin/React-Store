@@ -11,7 +11,7 @@ export default function App() {
     // for tests
     if (e.key == "F5") {
       localStorage.clear();
-      setCartAlert((alert) => ({
+      setCartAlert(() => ({
         active: false,
         amount: 0,
       }));
@@ -31,48 +31,6 @@ export default function App() {
 
   const listRef = useRef(null);
 
-  // const cartToJSON = [
-  //   {
-  //     name: "nike-air-jordan-xxxvii",
-  //     src: "./nike-air-jordan-xxxvii-w1/1.jpg",
-  //     id: "1",
-  //     images: [
-  //       "./nike-air-jordan-xxxvii-w1/1.jpg",
-  //       "./nike-air-jordan-xxxvii-w1/2.jpg",
-  //       "./nike-air-jordan-xxxvii-w1/3.jpg",
-  //     ],
-  //     price: 329,
-  //     description: {
-  //       category: "basketball",
-  //       model: "air-jordan-xxxvii",
-  //       gender: "male",
-  //       season: "summer",
-  //       color: "white",
-  //     },
-  //     sizes: [44],
-  //     amount: 1,
-  //   },
-  //   {
-  //     name: "nike-air-jordan-xxxvii",
-  //     src: "./nike-air-jordan-xxxvii-w2/1.jpg",
-  //     id: "2",
-  //     images: [
-  //       "./nike-air-jordan-xxxvii-w2/1.jpg",
-  //       "./nike-air-jordan-xxxvii-w2/2.jpg",
-  //       "./nike-air-jordan-xxxvii-w2/3.jpg",
-  //     ],
-  //     price: 329,
-  //     description: {
-  //       category: "basketball",
-  //       model: "air-jordan-xxxvii",
-  //       gender: "male",
-  //       season: "summer",
-  //       color: "white",
-  //     },
-  //     sizes: [44],
-  //     amount: 1,
-  //   },
-  // ];
   const cartToJSON = [];
 
   if (!localStorage.getItem("cart")) {

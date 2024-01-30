@@ -8,7 +8,11 @@ export default function Item(props) {
   const name = correctName(product.name);
 
   return (
-    <div className={classes.item}>
+    <div
+      className={classes.item}
+      onClick={(e) => props.onClickItem(e)}
+      id={"removeItem" + product.id}
+    >
       <a href={"#"} className={classes.imageBlock}>
         <img src={product.src} alt={product.alt} className={classes.image} />
       </a>
@@ -27,6 +31,7 @@ export default function Item(props) {
           <Interaction
             classesProduct={classes}
             removeBtn={true}
+            productId={product.id}
             amount={props.amount || 1}
           />
         </div>

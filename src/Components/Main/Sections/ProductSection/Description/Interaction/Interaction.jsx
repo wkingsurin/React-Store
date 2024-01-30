@@ -22,7 +22,11 @@ export default function Interaction(props) {
         </button>
       </div>
       {props.removeBtn && (
-        <button className={classesProduct.removeBtn} id="remove">
+        <button
+          className={classesProduct.removeBtn}
+          id={"remove" + props.productId}
+          data-remove="remove"
+        >
           Remove
         </button>
       )}
