@@ -1,14 +1,22 @@
-export const onClickPage = (e, setPage, setShowProduct, headerActiveClass) => {
+export const onClickPage = (
+  e,
+  setPage,
+  setShowProduct,
+  headerActiveClass,
+  setCartAlert
+) => {
   if (!e.target.closest("li")) return;
   const target = e.target.closest("li");
 
+  if (target.id == "cart") {
+    setCartAlert(() => ({ active: false, amount: 0 }));
+  }
+
   // Add loading animation
-  setPage((pageValue) => {
+  setPage(() => {
     const buttons = Array.from(target.closest("ul").children);
 
     buttons.forEach((button) => {
-      const path = button.querySelector("path");
-
       if (button.id != target.id) {
         button.classList.remove(headerActiveClass);
         return;
@@ -18,10 +26,8 @@ export const onClickPage = (e, setPage, setShowProduct, headerActiveClass) => {
 
     return target.id;
   });
-  setShowProduct((showProductValue) => {
-    return {
-      render: false,
-      id: "",
-    };
-  });
+  setShowProduct(() => ({
+    render: false,
+    id: "",
+  }));
 };

@@ -3,7 +3,8 @@ export const onClickInteraction = (
   setProductAmount,
   productAmount,
   product,
-  cart
+  cart,
+  setCartAlert
 ) => {
   if (!e.target.closest("button")) return;
   const target = e.target.closest("button");
@@ -25,7 +26,6 @@ export const onClickInteraction = (
       amount: productAmount,
       sizes: [44],
     });
-    // const productToCartJSON = JSON.stringify(productToCart);
 
     const parsedCart = [...JSON.parse(cart)];
     parsedCart.push(productToCart);
@@ -34,16 +34,11 @@ export const onClickInteraction = (
 
     localStorage.setItem("cart", parsedCartToJSON);
 
-    // console.log(`productToCartJSON:`, productToCartJSON);
-
-    // const newCart = JSON.stringify(JSON.parse(cart).push(productToCart));
-    // localStorage.setItem("cart", newCart);
-    // console.log("product pushed to cart!");
-
-    // console.log(JSON.parse(cart));
-
-    // console.log(newCart);
-
-    // console.log(localStorage.getItem("cart"));
+    setCartAlert((alert) => {
+      return {
+        active: true,
+        amount: alert.amount + 1,
+      };
+    });
   }
 };

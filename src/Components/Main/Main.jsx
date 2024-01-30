@@ -47,6 +47,8 @@ export default function Main(props) {
           setPage={props.setPage}
           onClickList={onClickList}
           setShowProduct={props.setShowProduct}
+          cartAlert={props.cartAlert}
+          setCartAlert={props.setCartAlert}
         />
       )}
       {props.showProduct.render && (
@@ -62,6 +64,8 @@ export default function Main(props) {
           setPage={props.setPage}
           setShowProduct={props.setShowProduct}
           onClickList={onClickList}
+          cartAlert={props.cartAlert}
+          setCartAlert={props.setCartAlert}
         />
       )}
     </main>

@@ -13,7 +13,8 @@ export default function Description(props) {
           props.setProductAmount,
           props.productAmount,
           product,
-          props.cart
+          props.cart,
+          props.setCartAlert
         )
       }
       className={classesProduct.description}

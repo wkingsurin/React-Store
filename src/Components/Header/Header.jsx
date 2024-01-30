@@ -1,5 +1,7 @@
 import classes from "./Header.module.scss";
 
+import CartAlert from "../Main/CartAlert";
+
 import StoreSvg from "./StoreSvg";
 import CartSvg from "./CartSvg";
 
@@ -14,7 +16,7 @@ export default function Header(props) {
           props.setPage,
           props.setShowProduct,
           headerActiveClass,
-          props.listRef
+          props.setCartAlert
         )
       }
       className={classes.header}
@@ -29,6 +31,12 @@ export default function Header(props) {
                 </button>
               </li>
               <li id="cart" className={classes.li}>
+                {props.cartAlert.active && (
+                  <CartAlert
+                    classesHeader={classes}
+                    amount={props.cartAlert.amount}
+                  />
+                )}
                 <button className={classes.button}>
                   <CartSvg classIcon={classes.icon} classPath={classes.path} />
                 </button>

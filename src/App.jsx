@@ -11,6 +11,10 @@ export default function App() {
     // for tests
     if (e.key == "F5") {
       localStorage.clear();
+      setCartAlert((alert) => ({
+        active: false,
+        amount: 0,
+      }));
     }
     if (e.key == "Escape") {
       setZoom(false);
@@ -20,6 +24,10 @@ export default function App() {
   const [page, setPage] = useState("preview");
   const [showProduct, setShowProduct] = useState(false);
   const [zoom, setZoom] = useState(false);
+  const [cartAlert, setCartAlert] = useState({
+    active: false,
+    amount: 0,
+  });
 
   const listRef = useRef(null);
 
@@ -80,6 +88,8 @@ export default function App() {
         classContainer={classes.container}
         setPage={setPage}
         setShowProduct={setShowProduct}
+        cartAlert={cartAlert}
+        setCartAlert={setCartAlert}
       />
       <Main
         listRef={listRef}
@@ -91,6 +101,8 @@ export default function App() {
         cart={cart}
         zoom={zoom}
         setZoom={setZoom}
+        cartAlert={cartAlert}
+        setCartAlert={setCartAlert}
       />
     </div>
   );

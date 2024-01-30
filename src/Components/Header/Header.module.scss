@@ -26,6 +26,7 @@
   }
 }
 .li {
+  position: relative;
   border-radius: var(--rad50);
 
   transition: var(--trans03s);
@@ -63,5 +64,30 @@
 
   .path {
     fill: var(--glob);
+  }
+}
+
+.cartAlert {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 21px;
+  height: 21px;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--rd);
+
+  background: white;
+  border-radius: var(--rad50);
+  box-shadow: var(--sh3);
+
+  .amount {
+    padding-left: 1px;
   }
 }

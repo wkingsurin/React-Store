@@ -65,6 +65,8 @@ export default function ProductSection(props) {
                 product={product}
                 productName={productName}
                 cart={props.cart}
+                cartAlert={props.cartAlert}
+                setCartAlert={props.setCartAlert}
               />
             </div>
           </div>
