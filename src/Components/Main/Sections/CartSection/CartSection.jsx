@@ -1,7 +1,5 @@
 import classes from "./CartSection.module.scss";
 
-import { useState } from "react";
-
 import Navigation from "../Navigation/Navigation";
 import Li from "../Navigation/Li";
 
@@ -9,10 +7,8 @@ import Item from "./Item";
 import Order from "./Order";
 
 export default function CartSection(props) {
-  const [cartState, setCartState] = useState(false);
-
   const classesMain = props.classes;
-  const cart = JSON.parse(props.cart);
+  let cart = JSON.parse(props.cart);
 
   console.log("render Cart");
   // Корзину можно сделать как сущность 'object' куда можно занести хранилище,
@@ -33,6 +29,10 @@ export default function CartSection(props) {
 
       const clearedCartJSON = JSON.stringify(clearedCart);
       localStorage.setItem("cart", clearedCartJSON);
+
+      if (clearedCart.length < 1) {
+        props.setCartState(false);
+      }
     }
   };
 
@@ -58,7 +58,7 @@ export default function CartSection(props) {
           <div className={classes.cart}>
             <h2 className={classes.title}>Cart</h2>
             <div className={classes.sectionContent}>
-              {cart.length > 0 ? (
+              {/* {cart.length > 0 ? (
                 <>
                   <div className={classes.items}>
                     {cart.map((item, index) => {
@@ -79,8 +79,8 @@ export default function CartSection(props) {
                 <div className={classes.emptyCart}>
                   <p>Select a product</p>
                 </div>
-              )}
-              {cartState == true && (
+              )} */}
+              {props.cartState && (
                 <>
                   <div className={classes.items}>
                     {cart.map((item, index) => {
@@ -98,11 +98,11 @@ export default function CartSection(props) {
                   <Order classes={classes} />
                 </>
               )}
-              {/* {cartState == false && (
+              {props.cartState == false && (
                 <div className={classes.emptyCart}>
                   <p>Select a product</p>
                 </div>
-              )} */}
+              )}
             </div>
           </div>
         </div>

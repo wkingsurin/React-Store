@@ -4,7 +4,8 @@ export const onClickInteraction = (
   productAmount,
   product,
   cart,
-  setCartAlert
+  setCartAlert,
+  setCartState
 ) => {
   if (!e.target.closest("button")) return;
   const target = e.target.closest("button");
@@ -40,5 +41,6 @@ export const onClickInteraction = (
         amount: alert.amount + 1,
       };
     });
+    setCartState(true);
   }
 };

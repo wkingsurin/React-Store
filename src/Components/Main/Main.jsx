@@ -1,4 +1,5 @@
 import { onClickList, onClickProduct, onClickShop } from "../../Handlers/index";
+import { useState } from "react";
 
 import classes from "./Main.module.scss";
 
@@ -11,6 +12,8 @@ import data from "../../data.json";
 import dataMini from "../../data-4-items.json";
 
 export default function Main(props) {
+  const [cartState, setCartState] = useState(false);
+
   return (
     <main className={classes.main}>
       {props.page === "preview" && (
@@ -49,6 +52,8 @@ export default function Main(props) {
           setShowProduct={props.setShowProduct}
           cartAlert={props.cartAlert}
           setCartAlert={props.setCartAlert}
+          setCartState={setCartState}
+          cartState={cartState}
         />
       )}
       {props.showProduct.render && (
@@ -66,6 +71,8 @@ export default function Main(props) {
           onClickList={onClickList}
           cartAlert={props.cartAlert}
           setCartAlert={props.setCartAlert}
+          setCartState={setCartState}
+          cartState={cartState}
         />
       )}
     </main>

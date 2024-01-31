@@ -25,7 +25,9 @@ export default function Card(props) {
           </div>
           <a
             id={props.id}
-            onClick={(e) => props.onClickProduct(e)}
+            onClick={(e) =>
+              props.onClickProduct(e, props.setShowProduct, props.setPage)
+            }
             href={"#"}
             className={props.classes.text}
           >

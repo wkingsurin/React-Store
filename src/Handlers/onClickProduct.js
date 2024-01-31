@@ -1,5 +1,5 @@
 export const onClickProduct = (e, setShowProduct, setPage) => {
-  if (!e.target.closest("A")) return;
+  if (!e.target.closest("a")) return;
   const target = e.target.closest("a");
 
   setShowProduct((prev) => {
