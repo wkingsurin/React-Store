@@ -1,4 +1,4 @@
-import { correctName } from "../../../../../Modules/correctName";
+import { correctName } from "../../../../../utils";
 
 export default function Table(props) {
   const model = correctName(props.product.description.model);

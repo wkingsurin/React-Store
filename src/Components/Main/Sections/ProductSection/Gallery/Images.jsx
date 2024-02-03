@@ -1,7 +1,7 @@
 import ImagesMain from "./ImagesMain";
 import Image from "./Image";
 
-import { correctName } from "../../../../../Modules/correctName";
+import { correctName } from "../../../../../utils";
 
 export default function Images(props) {
   return (

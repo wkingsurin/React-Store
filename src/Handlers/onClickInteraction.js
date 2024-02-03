@@ -1,3 +1,5 @@
+import { saveCart } from "../utils";
+
 export const onClickInteraction = (
   e,
   setProductAmount,
@@ -30,10 +32,7 @@ export const onClickInteraction = (
 
     const parsedCart = [...JSON.parse(cart)];
     parsedCart.push(productToCart);
-
-    const parsedCartToJSON = JSON.stringify(parsedCart);
-
-    localStorage.setItem("cart", parsedCartToJSON);
+    saveCart(parsedCart);
 
     setCartAlert((alert) => {
       return {
@@ -41,6 +40,6 @@ export const onClickInteraction = (
         amount: alert.amount + 1,
       };
     });
-    setCartState(true);
+    setCartState([]);
   }
 };

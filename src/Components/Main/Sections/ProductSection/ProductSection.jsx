@@ -8,7 +8,7 @@ import Gallery from "./Gallery/Gallery";
 import Description from "./Description/Description";
 import Zoom from "./Zoom";
 
-import { correctName } from "../../../../Modules/correctName";
+import { correctName } from "../../../../utils";
 import { onClickInteraction } from "../../../../Handlers/onClickInteraction";
 
 import { onClickMainImage } from "../../../../Handlers/onClickMainImage";

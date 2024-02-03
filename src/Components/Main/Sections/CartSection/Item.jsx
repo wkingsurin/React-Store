@@ -1,6 +1,6 @@
 import Interaction from "../ProductSection/Description/Interaction/Interaction";
 
-import { correctName } from "../../../../Modules/correctName";
+import { correctName } from "../../../../utils";
 
 export default function Item(props) {
   const classes = props.classes;
@@ -10,7 +10,7 @@ export default function Item(props) {
   return (
     <div
       className={classes.item}
-      onClick={(e) => props.onClickItem(e)}
+      onClick={(e) => props.onClickItem(e, props.setCartState)}
       id={"removeItem" + product.id}
     >
       <a href={"#"} className={classes.imageBlock}>

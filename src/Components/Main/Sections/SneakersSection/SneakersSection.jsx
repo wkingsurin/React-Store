@@ -1,6 +1,6 @@
 import classes from "./SneakersSection.module.scss";
 
-import { correctName } from "../../../../Modules/correctName";
+import { correctName } from "../../../../utils";
 
 import Card from "./Card";
 import Navigation from "../Navigation/Navigation";

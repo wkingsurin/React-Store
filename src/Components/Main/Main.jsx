@@ -12,7 +12,7 @@ import data from "../../data.json";
 import dataMini from "../../data-4-items.json";
 
 export default function Main(props) {
-  const [cartState, setCartState] = useState(false);
+  const [cartState, setCartState] = useState([]);
 
   return (
     <main className={classes.main}>
@@ -40,22 +40,6 @@ export default function Main(props) {
           onClickList={onClickList}
         />
       )}
-      {props.page === "cart" && (
-        <CartSection
-          listRef={props.listRef}
-          classes={classes}
-          classContainer={props.classContainer}
-          cart={props.cart}
-          page={props.page}
-          setPage={props.setPage}
-          onClickList={onClickList}
-          setShowProduct={props.setShowProduct}
-          cartAlert={props.cartAlert}
-          setCartAlert={props.setCartAlert}
-          setCartState={setCartState}
-          cartState={cartState}
-        />
-      )}
       {props.showProduct.render && (
         <ProductSection
           listRef={props.listRef}
@@ -69,6 +53,22 @@ export default function Main(props) {
           setPage={props.setPage}
           setShowProduct={props.setShowProduct}
           onClickList={onClickList}
+          cartAlert={props.cartAlert}
+          setCartAlert={props.setCartAlert}
+          setCartState={setCartState}
+          cartState={cartState}
+        />
+      )}
+      {props.page === "cart" && (
+        <CartSection
+          listRef={props.listRef}
+          classes={classes}
+          classContainer={props.classContainer}
+          cart={props.cart}
+          page={props.page}
+          setPage={props.setPage}
+          onClickList={onClickList}
+          setShowProduct={props.setShowProduct}
           cartAlert={props.cartAlert}
           setCartAlert={props.setCartAlert}
           setCartState={setCartState}
