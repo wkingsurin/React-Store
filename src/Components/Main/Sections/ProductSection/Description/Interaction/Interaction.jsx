@@ -10,6 +10,7 @@ export default function Interaction(props) {
         <button
           className={`${classesProduct.decrement} ${classesProduct.iconBlock}`}
           id="decrement"
+          onClick={props.handleItemDecrement}
         >
           <DecrementSvg classesProduct={classesProduct} />
         </button>
@@ -17,6 +18,7 @@ export default function Interaction(props) {
         <button
           className={`${classesProduct.increment} ${classesProduct.iconBlock}`}
           id="increment"
+          onClick={props.handleItemIncrement}
         >
           <IncrementSvg classesProduct={classesProduct} />
         </button>

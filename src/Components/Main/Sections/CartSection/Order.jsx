@@ -14,7 +14,12 @@ export default function Order(props) {
             <span className={classes.value}>598</span>
           </div>
         </div>
-        <button className={classes.buyButton}>Buy</button>
+        <button
+          className={classes.buyButton}
+          onClick={(e) => props.onClickBuy(e)}
+        >
+          Buy
+        </button>
       </div>
     </div>
   );

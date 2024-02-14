@@ -1,5 +1,5 @@
 import classes from "./CartSection.module.scss";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   saveCart,
   getCurrentCart,
@@ -13,11 +13,12 @@ import Li from "../Navigation/Li";
 import Item from "./Item";
 import Order from "./Order";
 
+import BuyAlert from "./BuyAlert";
+
 export default function CartSection(props) {
+  const [isBuyed, setIsBuyed] = useState(false);
   const classesMain = props.classes;
   let cart = JSON.parse(localStorage.getItem("cart"));
-
-  console.log("render Cart");
 
   useEffect(() => {
     props.setCartState((prev) => (cart.length > 0 ? cart : []));
@@ -30,19 +31,22 @@ export default function CartSection(props) {
     const target = e.target.closest("button");
 
     if (target.dataset.remove == "remove") {
-      const removedItem = getItem(e.target, e.target.id);
-      const removedItemId = getItemId(removedItem.id);
+      const item = getItem(e.target, e.target.id);
+      const itemId = getItemId(item.id);
 
-      removedItem.remove();
-      cart = getCurrentCart(cart, removedItemId);
+      item.remove();
+      cart = getCurrentCart(cart, itemId);
 
-      const clearedCart = cart.filter((item) => item.id != removedItemId);
+      const clearedCart = cart.filter((item) => item.id != itemId);
       saveCart(clearedCart);
 
       if (clearedCart.length < 1) {
         setCartState([]);
       }
     }
+  };
+  const onClickBuy = (e) => {
+    setIsBuyed(true);
   };
 
   return (
@@ -83,7 +87,7 @@ export default function CartSection(props) {
                       );
                     })}
                   </div>
-                  <Order classes={classes} />
+                  <Order classes={classes} onClickBuy={onClickBuy} />
                 </>
               )}
               {props.cartState.length < 1 && (
@@ -95,6 +99,17 @@ export default function CartSection(props) {
           </div>
         </div>
       </div>
+      {isBuyed ? (
+        <BuyAlert
+          cardClasses={classes}
+          name={"Name"}
+          setIsBuyed={setIsBuyed}
+          cartState={props.cartState}
+          setCartState={props.setCartState}
+        />
+      ) : (
+        false
+      )}
     </section>
   );
 }

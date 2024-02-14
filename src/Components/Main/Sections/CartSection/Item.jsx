@@ -1,11 +1,23 @@
+import { useState } from "react";
 import Interaction from "../ProductSection/Description/Interaction/Interaction";
 
 import { correctName } from "../../../../utils";
 
 export default function Item(props) {
+  const [amount, setAmount] = useState(props.amount);
+
   const classes = props.classes;
   const product = props.product;
   const name = correctName(product.name);
+
+  function handleItemDecrement() {
+    if (amount < 1) return;
+    setAmount((a) => a - 1);
+  }
+
+  function handleItemIncrement() {
+    setAmount((a) => a + 1);
+  }
 
   return (
     <div
@@ -32,7 +44,9 @@ export default function Item(props) {
             classesProduct={classes}
             removeBtn={true}
             productId={product.id}
-            amount={props.amount || 1}
+            amount={amount || 1}
+            handleItemDecrement={handleItemDecrement}
+            handleItemIncrement={handleItemIncrement}
           />
         </div>
       </div>
