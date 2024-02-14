@@ -9,6 +9,8 @@ export const onClickInteraction = (
   setCartAlert,
   setCartState
 ) => {
+  let similar = false;
+
   if (!e.target.closest("button")) return;
   const target = e.target.closest("button");
 
@@ -31,7 +33,15 @@ export const onClickInteraction = (
     });
 
     const parsedCart = [...JSON.parse(cart)];
-    parsedCart.push(productToCart);
+    parsedCart.map((product) => {
+      if (product.id == productToCart.id) {
+        similar = true;
+        product.amount = product.amount + productToCart.amount;
+      }
+    });
+    if (!similar) {
+      parsedCart.push(productToCart);
+    }
     saveCart(parsedCart);
 
     setCartAlert((alert) => {
