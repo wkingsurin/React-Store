@@ -30,6 +30,7 @@ export const onClickInteraction = (
     const productToCart = Object.assign(product, {
       amount: productAmount,
       sizes: [44],
+      totalPrice: productAmount * product.price,
     });
 
     const parsedCart = [...JSON.parse(cart)];

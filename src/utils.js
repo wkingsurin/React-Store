@@ -25,3 +25,5 @@ export function getItem(target, targetId) {
 export function getItemId(itemId) {
   return itemId.substring(10);
 }
+
+export const cart = JSON.parse(localStorage.getItem("cart"));

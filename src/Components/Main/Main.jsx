@@ -8,7 +8,6 @@ import SneakersSection from "./Sections/SneakersSection/SneakersSection";
 import ProductSection from "./Sections/ProductSection/ProductSection";
 import CartSection from "./Sections/CartSection/CartSection";
 
-import data from "../../data.json";
 import dataMini from "../../data-4-items.json";
 
 export default function Main(props) {
@@ -45,7 +44,7 @@ export default function Main(props) {
           listRef={props.listRef}
           classesMain={classes}
           classContainer={props.classContainer}
-          data={data[props.showProduct.id]}
+          data={dataMini[props.showProduct.id]}
           cart={props.cart}
           zoom={props.zoom}
           setZoom={props.setZoom}

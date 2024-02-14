@@ -44,6 +44,7 @@ export default function SneakersSection(props) {
                       id={item.id}
                       classes={classes}
                       name={name}
+                      value={item.price}
                       src={item.src}
                       alt={item.name}
                       onClickProduct={props.onClickProduct}

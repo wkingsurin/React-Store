@@ -1,6 +1,5 @@
 export default function Order(props) {
   const classes = props.classes;
-  const product = props.product;
 
   return (
     <div className={classes.order}>
@@ -11,7 +10,7 @@ export default function Order(props) {
           </div>
           <div className={classes.orderTotal}>
             <span className={classes.currency}>$</span>
-            <span className={classes.value}>598</span>
+            <span className={classes.value}>{props.total}</span>
           </div>
         </div>
         <button

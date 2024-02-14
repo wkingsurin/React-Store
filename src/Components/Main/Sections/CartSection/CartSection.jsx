@@ -16,11 +16,14 @@ import Order from "./Order";
 import BuyAlert from "./BuyAlert";
 
 export default function CartSection(props) {
+  const [totalPrice, setTotalPrice] = useState(0);
   const [isBuyed, setIsBuyed] = useState(false);
   const classesMain = props.classes;
   let cart = JSON.parse(localStorage.getItem("cart"));
 
   useEffect(() => {
+    const total = cart.reduce((acc, next) => acc + next.totalPrice, 0);
+    setTotalPrice(total);
     props.setCartState((prev) => (cart.length > 0 ? cart : []));
   }, []);
   // Корзину можно сделать как сущность 'object' куда можно занести хранилище,
@@ -48,8 +51,6 @@ export default function CartSection(props) {
   const onClickBuy = (e) => {
     setIsBuyed(true);
   };
-
-  console.log(`cartState:`, props.cartState);
 
   return (
     <section className={classesMain.section}>
@@ -85,11 +86,16 @@ export default function CartSection(props) {
                           amount={item.amount}
                           onClickItem={onClickItem}
                           setCartState={props.setCartState}
+                          setTotalPrice={setTotalPrice}
                         />
                       );
                     })}
                   </div>
-                  <Order classes={classes} onClickBuy={onClickBuy} />
+                  <Order
+                    classes={classes}
+                    onClickBuy={onClickBuy}
+                    total={totalPrice}
+                  />
                 </>
               )}
               {props.cartState.length < 1 && (

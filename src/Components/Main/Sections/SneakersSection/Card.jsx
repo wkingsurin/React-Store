@@ -21,7 +21,7 @@ export default function Card(props) {
             <span className={props.classes.currency}>
               {props.currency || "$"}
             </span>
-            <span className={props.classes.value}>{props.value || 329}</span>
+            <span className={props.classes.value}>{props.value || 89}</span>
           </div>
           <a
             id={props.id}

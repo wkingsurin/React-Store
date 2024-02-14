@@ -4,11 +4,11 @@ import Interaction from "../ProductSection/Description/Interaction/Interaction";
 import { correctName, saveCart } from "../../../../utils";
 
 export default function Item(props) {
-  let cart = JSON.parse(localStorage.getItem("cart"));
-
   const classes = props.classes;
   const product = props.product;
   const name = correctName(product.name);
+
+  console.log(product);
 
   function handleItemDecrement(e) {
     let newCart;
@@ -21,11 +21,18 @@ export default function Item(props) {
           return {
             ...product,
             amount: product.amount - 1 == 0 ? 1 : product.amount - 1,
+            totalPrice:
+              product.amount - 1 == 0
+                ? product.price
+                : (product.amount - 1) * product.price,
           };
         } else {
           return product;
         }
       });
+      const total = newCart.reduce((acc, next) => acc + next.totalPrice, 0);
+      props.setTotalPrice(total);
+
       saveCart(newCart);
       return newCart;
     });
@@ -39,11 +46,18 @@ export default function Item(props) {
     props.setCartState((prevCart) => {
       newCart = prevCart.map((product) => {
         if (product.id == item.dataset.id) {
-          return { ...product, amount: product.amount + 1 };
+          return {
+            ...product,
+            amount: product.amount + 1,
+            totalPrice: (product.amount + 1) * product.price,
+          };
         } else {
           return product;
         }
       });
+      const total = newCart.reduce((acc, next) => acc + next.totalPrice, 0);
+      props.setTotalPrice(total);
+
       saveCart(newCart);
       return newCart;
     });
