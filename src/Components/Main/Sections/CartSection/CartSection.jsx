@@ -49,6 +49,8 @@ export default function CartSection(props) {
     setIsBuyed(true);
   };
 
+  console.log(`cartState:`, props.cartState);
+
   return (
     <section className={classesMain.section}>
       <div className={props.classContainer}>
@@ -80,7 +82,7 @@ export default function CartSection(props) {
                           key={index}
                           classes={classes}
                           product={item}
-                          amount={item.amount || 1}
+                          amount={item.amount}
                           onClickItem={onClickItem}
                           setCartState={props.setCartState}
                         />

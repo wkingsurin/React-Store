@@ -1,22 +1,52 @@
 import { useState } from "react";
 import Interaction from "../ProductSection/Description/Interaction/Interaction";
 
-import { correctName } from "../../../../utils";
+import { correctName, saveCart } from "../../../../utils";
 
 export default function Item(props) {
-  const [amount, setAmount] = useState(props.amount);
+  let cart = JSON.parse(localStorage.getItem("cart"));
 
   const classes = props.classes;
   const product = props.product;
   const name = correctName(product.name);
 
-  function handleItemDecrement() {
-    if (amount < 1) return;
-    setAmount((a) => a - 1);
+  function handleItemDecrement(e) {
+    let newCart;
+    const target = e.target.closest("button");
+    const item = target.closest("[data-id]");
+
+    props.setCartState((prevCart) => {
+      newCart = prevCart.map((product) => {
+        if (product.id == item.dataset.id) {
+          return {
+            ...product,
+            amount: product.amount - 1 == 0 ? 1 : product.amount - 1,
+          };
+        } else {
+          return product;
+        }
+      });
+      saveCart(newCart);
+      return newCart;
+    });
   }
 
-  function handleItemIncrement() {
-    setAmount((a) => a + 1);
+  function handleItemIncrement(e) {
+    let newCart;
+    const target = e.target.closest("button");
+    const item = target.closest("[data-id]");
+
+    props.setCartState((prevCart) => {
+      newCart = prevCart.map((product) => {
+        if (product.id == item.dataset.id) {
+          return { ...product, amount: product.amount + 1 };
+        } else {
+          return product;
+        }
+      });
+      saveCart(newCart);
+      return newCart;
+    });
   }
 
   return (
@@ -24,6 +54,7 @@ export default function Item(props) {
       className={classes.item}
       onClick={(e) => props.onClickItem(e, props.setCartState)}
       id={"removeItem" + product.id}
+      data-id={product.id}
     >
       <a href={"#"} className={classes.imageBlock}>
         <img src={product.src} alt={product.alt} className={classes.image} />
@@ -44,9 +75,9 @@ export default function Item(props) {
             classesProduct={classes}
             removeBtn={true}
             productId={product.id}
-            amount={amount || 1}
-            handleItemDecrement={handleItemDecrement}
-            handleItemIncrement={handleItemIncrement}
+            amount={product.amount || 1}
+            handleItemDecrement={(e) => handleItemDecrement(e)}
+            handleItemIncrement={(e) => handleItemIncrement(e)}
           />
         </div>
       </div>

@@ -1,6 +1,9 @@
 export function saveCart(items) {
   localStorage.setItem("cart", JSON.stringify(items));
 }
+export function clearCart() {
+  localStorage.removeItem("cart");
+}
 
 export function correctName(name) {
   return name
