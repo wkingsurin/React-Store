@@ -40,6 +40,9 @@ export default function CartSection(props) {
       item.remove();
       cart = getCurrentCart(cart, itemId);
 
+      const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+      setTotalPrice(total);
+
       const clearedCart = cart.filter((item) => item.id != itemId);
       saveCart(clearedCart);
 
