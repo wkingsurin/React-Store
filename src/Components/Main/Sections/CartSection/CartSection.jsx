@@ -5,6 +5,7 @@ import {
   getCurrentCart,
   getItem,
   getItemId,
+  getCart,
 } from "../../../../utils";
 
 import Navigation from "../Navigation/Navigation";
@@ -18,8 +19,9 @@ import BuyAlert from "./BuyAlert";
 export default function CartSection(props) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [isBuyed, setIsBuyed] = useState(false);
+  const [cartLength, setCartLength] = useState(getCart().length);
   const classesMain = props.classes;
-  let cart = JSON.parse(localStorage.getItem("cart"));
+  let cart = getCart();
 
   useEffect(() => {
     const total = cart.reduce((acc, next) => acc + next.totalPrice, 0);
@@ -45,6 +47,7 @@ export default function CartSection(props) {
 
       const clearedCart = cart.filter((item) => item.id != itemId);
       saveCart(clearedCart);
+      setCartLength(clearedCart.length);
 
       if (clearedCart.length < 1) {
         setCartState([]);
@@ -98,6 +101,7 @@ export default function CartSection(props) {
                     classes={classes}
                     onClickBuy={onClickBuy}
                     total={totalPrice}
+                    cartLength={cartLength}
                   />
                 </>
               )}

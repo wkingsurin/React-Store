@@ -8,8 +8,6 @@ export default function Item(props) {
   const product = props.product;
   const name = correctName(product.name);
 
-  console.log(product);
-
   function handleItemDecrement(e) {
     let newCart;
     const target = e.target.closest("button");
